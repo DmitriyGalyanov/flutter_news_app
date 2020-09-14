@@ -3,11 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'dart:math';
 
-//TODO: LINKS VIA GESTURE DETECTORS?
-//TODO: NAVIGATION TO SINGLE POST
-//TODO: ADD ABILITY TO BOOKMARK POSTS
-//TODO: ADD BOTTOM BAR WITH BUTTON LEADING TO BOOKMARKS
-//TODO: ADD SORTING
+import 'package:flutter_news_app/components/NewsItemPage.dart';
+
 
 class NewsTile extends StatelessWidget {
   final String author;
@@ -75,7 +72,6 @@ class NewsTile extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(title,
@@ -92,12 +88,45 @@ class NewsTile extends StatelessWidget {
                         SizedBox(
                           height: 24.0,
                         ),
-                        Text(publisher, //it is a link (gesture detector?)
-                            style: TextStyle(
-                              fontSize: 14.0,
-                              //opacity
-                            )),
-                        Text(publishedAt),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(publisher, //it is a link (gesture detector?)
+                                    style: TextStyle(
+                                      fontSize: 14.0,
+                                      //opacity
+                                    )),
+                                Text(publishedAt),
+                              ],
+                            ),
+                            Material(
+                              color: Color(0x00FFFFFF),
+                              child: IconButton(
+                                icon:  Icon(Icons.import_contacts),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) {
+                                      return NewsItemPage(
+                                        publisher: publisher,
+                                        author: author,
+                                        title: title,
+                                        description: description,
+                                        urlToNews: urlToNews,
+                                        urlToImage: urlToImage,
+                                        publishedAt: publishedAt,
+                                        content: content,
+                                      );
+                                    })
+                                  );
+                                },
+                              ),
+                            )
+                          ],
+                        ),
                       ],
                     ),
                   )

@@ -9,10 +9,20 @@ void main() {
   runApp(MyApp());
 }
 
+//TODO: LINKS VIA GESTURE DETECTORS?
+//TODO: NAVIGATION TO SINGLE POST
+//TODO: ADD ABILITY TO BOOKMARK POSTS
+//TODO: ADD BOTTOM BAR WITH BUTTON LEADING TO BOOKMARKS
+//TODO: ADD SORTING
+//TODO: ADD 3RD BUTTON TO BOTTOM NAV BAR
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+
+      },
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.cyan,
