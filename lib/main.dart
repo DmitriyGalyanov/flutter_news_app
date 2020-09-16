@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:gradient_bottom_navigation_bar/gradient_bottom_navigation_bar.dart';
 
@@ -15,6 +18,7 @@ void main() {
 //TODO: ADD BOTTOM BAR WITH BUTTON LEADING TO BOOKMARKS
 //TODO: ADD SORTING
 //TODO: ADD 3RD BUTTON TO BOTTOM NAV BAR
+//TODO: MOVE FETCH FROM NewsTileList TO MAIN
 
 class MyApp extends StatelessWidget {
   @override
@@ -23,7 +27,7 @@ class MyApp extends StatelessWidget {
       routes: {
 
       },
-      title: 'Flutter Demo',
+      title: 'Simple News App',
       theme: ThemeData(
         primarySwatch: Colors.cyan,
         primaryColor: Colors.cyan,
@@ -44,7 +48,29 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+class NewsTileData {
+  String author;
+  String title;
+  String description;
+  String urlToNews;
+  String urlToImage;
+  String publishedAt;
+  String content;
+  String publisher;
+}
+
 class _MyHomePageState extends State<MyHomePage> {
+  final bookmarkedNews = <NewsTileData>[];
+
+  final String apiUrl =
+      'http://newsapi.org/v2/top-headlines?' +
+          'country=us&' +
+          'apiKey=3f1d580b86b6414e8be8098c17351375';
+
+  Future fetchNews() async {
+    var result = await http.get(apiUrl);
+    return json.decode(result.body)['articles'];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ),
         child: Center(
-          child: NewsTileList()
+          child: NewsTileList(newsFuture: fetchNews())
         ),
       ),
       bottomNavigationBar: GradientBottomNavigationBar(

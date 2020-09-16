@@ -1,12 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'dart:math';
-
 import 'package:flutter_news_app/components/NewsItemPage.dart';
 
+class NewsTileData {
+  String author;
+  String title;
+  String description;
+  String urlToNews;
+  String urlToImage;
+  String publishedAt;
+  String content;
+  String publisher;
+}
 
-class NewsTile extends StatelessWidget {
+class NewsTile extends StatefulWidget {
   final String author;
   final String title;
   final String description;
@@ -15,6 +23,7 @@ class NewsTile extends StatelessWidget {
   final String publishedAt;
   final String content;
   final String publisher;
+  final bool isBookmarked;
 
   const NewsTile(
       {@required this.author,
@@ -24,14 +33,25 @@ class NewsTile extends StatelessWidget {
       this.urlToImage,
       @required this.publishedAt,
       @required this.content,
-      @required this.publisher});
+      @required this.publisher,
+      this.isBookmarked = false
+      });
+
+  @override
+  _NewsTileState createState() => _NewsTileState();
+}
+
+class _NewsTileState extends State<NewsTile> {
 
   Widget portraitLayoutVariant(BuildContext context) {
     // final regEx = RegExp(r"^https?:\/\/w?w?w?\.?.+\..+[^\/]$");
     // var test = regEx.firstMatch(urlToNews);
     // if (test != null) print(test.group(0));
 
-    final deviceData = MediaQuery.of(context);
+    // final deviceData = MediaQuery.of(context);
+    // final isBookmarked =
+    var isBookmarked = widget.isBookmarked;
+
     return Container(
         margin: EdgeInsets.only(bottom: 22.0),
         decoration: BoxDecoration(
@@ -46,7 +66,7 @@ class NewsTile extends StatelessWidget {
                   topLeft: Radius.circular(10.0),
                   topRight: Radius.circular(10.0)),
               child: Image.network(
-                urlToImage,
+                widget.urlToImage,
                 loadingBuilder: (BuildContext context, child, progress) {
                   return progress == null ? child : LinearProgressIndicator();
                 },
@@ -62,8 +82,17 @@ class NewsTile extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Flexible(child: Text(author)),
-                      Icon(Icons.bookmark_border)
+                      Flexible(child: Text(widget.author)),
+                      Material(
+                        color: Color(0x00FFFFFF),
+                        child: InkWell(
+                          splashColor: Colors.red,
+                          onTap: () => {},
+                          child: Icon(
+                              isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                              color: isBookmarked ? Colors.green : null),
+                        ),
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -74,13 +103,13 @@ class NewsTile extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(title,
+                        Text(widget.title,
                             style: TextStyle(
                                 fontSize: 20.0, fontWeight: FontWeight.bold)),
                         SizedBox(
                           height: 8.0
                         ),
-                        Text(content,
+                        Text(widget.content,
                             style: TextStyle(
                               fontSize: 14.0,
                               //opacity
@@ -94,12 +123,12 @@ class NewsTile extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(publisher, //it is a link (gesture detector?)
+                                Text(widget.publisher, //it is a link (gesture detector?)
                                     style: TextStyle(
                                       fontSize: 14.0,
                                       //opacity
                                     )),
-                                Text(publishedAt),
+                                Text(widget.publishedAt),
                               ],
                             ),
                             Material(
@@ -111,14 +140,14 @@ class NewsTile extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(builder: (context) {
                                       return NewsItemPage(
-                                        publisher: publisher,
-                                        author: author,
-                                        title: title,
-                                        description: description,
-                                        urlToNews: urlToNews,
-                                        urlToImage: urlToImage,
-                                        publishedAt: publishedAt,
-                                        content: content,
+                                        publisher: widget.publisher,
+                                        author: widget.author,
+                                        title: widget.title,
+                                        description: widget.description,
+                                        urlToNews: widget.urlToNews,
+                                        urlToImage: widget.urlToImage,
+                                        publishedAt: widget.publishedAt,
+                                        content: widget.content,
                                       );
                                     })
                                   );
