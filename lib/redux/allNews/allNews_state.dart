@@ -12,13 +12,7 @@ class AllNewsState {
   AllNewsState({this.allNewsList, this.isLoading, this.isError});
 
   factory AllNewsState.initial() =>
-      AllNewsState(
-          isLoading: false,
-          isError: false,
-          allNewsList: const []
-      );
-
-  // get allNewsState => this.allNewsState;
+      AllNewsState(isLoading: false, isError: false, allNewsList: const []);
 
   AllNewsState copyWith({
     @required bool isLoading,
@@ -26,13 +20,8 @@ class AllNewsState {
     @required List<NewsPieceData> allNewsList,
   }) {
     return AllNewsState(
-      isLoading: isLoading ?? this.isLoading,
-      isError: isError ?? this.isError,
-      allNewsList: allNewsList ?? this.allNewsList
-    );
+        isLoading: isLoading ?? this.isLoading,
+        isError: isError ?? this.isError,
+        allNewsList: allNewsList ?? this.allNewsList);
   }
-
-  // static List<NewsPieceData> listFromJson(List json) {
-  //   return json == null ? List<NewsPieceData>() : json.map((model) => NewsPieceData.fromJson(model)).toList();
-  // }
 }

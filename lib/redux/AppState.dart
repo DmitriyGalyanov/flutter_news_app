@@ -1,23 +1,13 @@
 // CREATED FIRST
 
-// import 'package:flutter/material.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_news_app/model/Models.dart';
+import 'package:flutter_news_app/redux/MainReducer.dart';
 import 'package:flutter_news_app/redux/allNews/allNews_state.dart';
+import 'package:redux/redux.dart';
+import 'package:redux_thunk/redux_thunk.dart';
 
 //TODO: split (combine) reducers
-//TODO: create slices
-
-// class AppState {
-//   List<NewsPieceData> allNewsList;
-//   // those variables are store.state fields
-//   AppState(
-//       {
-//         this.allNewsList,
-//       });
-//   //we can define default values
-// }
 
 class AppState {
   final AllNewsState allNewsState;
@@ -33,6 +23,24 @@ class AppState {
       allNewsState: allNewsState ?? this.allNewsState,
     );
   }
+}
 
-  // static AllNewsState get allNewsState => this.allNewsState;
+class Redux {
+  static Store<AppState> _store;
+
+  static Store<AppState> get store {
+    if (_store == null) {
+      throw Exception("store is not initialized");
+    } else {
+      return _store;
+    }
+  }
+
+  static Future<void> init() async {
+    final allNewsStateInitial = AllNewsState.initial();
+
+    _store = Store<AppState>(mainReducer,
+        middleware: [thunkMiddleware],
+        initialState: AppState(allNewsState: allNewsStateInitial));
+  }
 }

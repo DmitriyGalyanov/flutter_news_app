@@ -32,16 +32,11 @@ class NewsTileList extends StatelessWidget {
       //   store.dispatch(fetchAllNewsAction);
       // },
       converter: (store) => store.state.allNewsState, //take allNewsState instead of all state
-      builder: (context, state) {
+      builder: (context, allNewsState) {
         //'state' is coming from converter
-        // if (state.allNewsList == null) {
-        // if (state.allNewsState.allNewsList.length == 0) {
-        // if (state.allNewsState.isError == false && state.allNewsState.isLoading == false) {
-        //   return Text('tesssst');
-        // }
-        if (state.isLoading == true) {
+        if (allNewsState.isLoading == true) {
           return Center(child: CircularProgressIndicator());
-        } else if (state.isError == true) {
+        } else if (allNewsState.isError == true) {
           return Center(child: Text('Something went wrong, refresh please'));
           //some error note
         } else
@@ -49,23 +44,23 @@ class NewsTileList extends StatelessWidget {
             width: deviceData.size.width * 0.85,
             child: ListView.builder(
                 itemCount:
-                    state.allNewsList != null ? state.allNewsList.length : 0,
+                    allNewsState.allNewsList != null ? allNewsState.allNewsList.length : 0,
                 itemBuilder: (_, index) => NewsTile(
-                      author: state.allNewsList[index].author ??
+                      author: allNewsState.allNewsList[index].author ??
                           'No Author provided',
                       title:
-                          state.allNewsList[index].title ?? 'No title provided',
-                      description: state.allNewsList[index].description ??
+                          allNewsState.allNewsList[index].title ?? 'No title provided',
+                      description: allNewsState.allNewsList[index].description ??
                           'No description provided',
-                      urlToNews: state.allNewsList[index].urlToNews ??
+                      urlToNews: allNewsState.allNewsList[index].urlToNews ??
                           'http://google.com/',
-                      urlToImage: state.allNewsList[index].urlToImage ??
+                      urlToImage: allNewsState.allNewsList[index].urlToImage ??
                           placeHolderImage,
-                      publishedAt: state.allNewsList[index].publishedAt ??
+                      publishedAt: allNewsState.allNewsList[index].publishedAt ??
                           'Publication time is not provided',
-                      content: state.allNewsList[index].content ??
+                      content: allNewsState.allNewsList[index].content ??
                           'No content provided',
-                      publisher: state.allNewsList[index].publisher ??
+                      publisher: allNewsState.allNewsList[index].publisher ??
                           'No publisher provided',
                     )));
       }, //state comes from converter

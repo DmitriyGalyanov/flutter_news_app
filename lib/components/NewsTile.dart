@@ -17,7 +17,7 @@ class NewsTile extends StatefulWidget {
   final String publishedAt;
   final String content;
   final String publisher;
-  final bool isBookmarked;
+  // final bool isBookmarked;
 
   const NewsTile(
       {@required this.author,
@@ -28,7 +28,8 @@ class NewsTile extends StatefulWidget {
       @required this.publishedAt,
       @required this.content,
       @required this.publisher,
-      this.isBookmarked = false});
+      // this.isBookmarked = false
+      });
 
   @override
   _NewsTileState createState() => _NewsTileState();
@@ -39,7 +40,7 @@ class _NewsTileState extends State<NewsTile> {
     // final regEx = RegExp(r"^https?:\/\/w?w?w?\.?.+\..+[^\/]$");
     // var test = regEx.firstMatch(urlToNews);
     // if (test != null) print(test.group(0));
-    var isBookmarked = widget.isBookmarked;
+    // var isBookmarked = widget.isBookmarked;
 
     return StoreConnector<AppState, AppState>(
       converter: (store) => store.state,
@@ -83,11 +84,12 @@ class _NewsTileState extends State<NewsTile> {
                               // StoreProvider.of<AppState>(context)
                               //     .dispatch();
                             },
-                            child: Icon(
-                                isBookmarked
-                                    ? Icons.bookmark
-                                    : Icons.bookmark_border,
-                                color: isBookmarked ? Colors.green : null),
+                            child: Icon(Icons.bookmark_border),
+                            // child: Icon(
+                            //     isBookmarked
+                            //         ? Icons.bookmark
+                            //         : Icons.bookmark_border,
+                            //     color: isBookmarked ? Colors.green : null),
                           ),
                         ),
                       ],
