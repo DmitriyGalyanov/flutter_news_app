@@ -44,8 +44,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // GO HERE FOURTH
     // final _initialState = AppState();
-    final Store<AppState> store = Store<AppState>(
-        mainReducer,
+    final Store<AppState> store = Store<AppState>(mainReducer,
         middleware: [thunkMiddleware],
         initialState: AppState(allNewsState: AllNewsState.initial()));
 
@@ -59,8 +58,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         initialRoute: '/',
         routes: {
-          '/': (BuildContext context) =>
-              HomePage(title: 'Flutter News App'),
+          '/': (BuildContext context) => HomePage(title: 'Flutter News App'),
           // '/bookmarks': (BuildContext context) => BookmarksPage(title: 'test'),
         },
         title: 'Simple News App',
@@ -116,47 +114,53 @@ class _HomePageState extends State<HomePage> {
     } else if (currentPage == 'bookmarks') {
       body = Center(child: Text('bookmarks'));
     }
-    return Scaffold(
-      // endDrawer: ReduxDevTools<AppState>(widget.devStore),
-      appBar: GradientAppBar(
-        title: Text(title),
-        gradient: LinearGradient(colors: [
-          Theme.of(context).primaryColor,
-          Theme.of(context).accentColor
-        ]),
-      ),
-      body: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [
+    return StoreConnector<AppState, Store<AppState>>(
+      converter: (store) => store,
+      builder: (context, store) => Scaffold(
+        appBar: GradientAppBar(
+          title: Text(title),
+          gradient: LinearGradient(colors: [
             Theme.of(context).primaryColor,
             Theme.of(context).accentColor
-          ], begin: Alignment.topLeft, end: Alignment.bottomLeft)),
-          child: body),
-          // child: NewsTileList()),
-      bottomNavigationBar: GradientBottomNavigationBar(
-        backgroundColorStart: Theme.of(context).accentColor,
-        backgroundColorEnd: Theme.of(context).primaryColor,
-        onTap: handleBottomNavTap,
-        currentIndex: _currentPageIndex,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.collections_bookmark), title: Text('Bookmarks')),
-        ],
-      ),
-      floatingActionButton: StoreConnector<AppState, Store<AppState>>(
-        converter: (store) => store,
-        builder: (context, store) => FloatingActionButton(
+          ]),
+        ),
+        body: Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+              Theme.of(context).primaryColor,
+              Theme.of(context).accentColor
+            ], begin: Alignment.topLeft, end: Alignment.bottomLeft)),
+            child: body),
+        // child: NewsTileList()),
+        bottomNavigationBar: GradientBottomNavigationBar(
+          backgroundColorStart: Theme.of(context).accentColor,
+          backgroundColorEnd: Theme.of(context).primaryColor,
+          onTap: handleBottomNavTap,
+          currentIndex: _currentPageIndex,
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home), title: Text('Home')),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.collections_bookmark),
+                title: Text('Bookmarks')),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
           backgroundColor: Theme.of(context).primaryColor,
           // child: Icon(Icons.refresh)
-          child: Icon(Icons.get_app),
+          child: store.state.allNewsState.allNewsList.length == 0
+              ? Icon(Icons.get_app)
+              : Icon(Icons.refresh),
           onPressed: () {
             store.dispatch(fetchAllNewsAction(store));
           },
         ),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
+        floatingActionButtonLocation:
+            store.state.allNewsState.allNewsList.length == 0
+                ? FloatingActionButtonLocation.startFloat
+                : FloatingActionButtonLocation.startDocked,
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
     // );
   }

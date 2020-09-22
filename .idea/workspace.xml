@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="326a50b8-57ca-4280-895d-1428074bc2df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/redux/AppState.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/redux/MainReducer.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/redux/allNews/allNews_state.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/HomePageBodies/NewsTileList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageBodies/NewsTileList.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/components/NewsTile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/NewsTile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/AppState.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/NewsPieceData.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/NewsPieceData.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/allNews/allNews_actions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/allNews/allNews_actions.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/allNews/allNews_reducers.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/allNews/allNews_reducer.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -27,10 +27,10 @@ class NewsTileList extends StatelessWidget {
       //<input, output>
       // rebuildOnChange: true,
       // return StoreConnector<AppState, List<NewsPieceData>>(
-      distinct: true,
-      onInit: (store) {
-        store.dispatch(fetchAllNewsAction);
-      },
+      // distinct: true,
+      // onInit: (store) {
+      //   store.dispatch(fetchAllNewsAction);
+      // },
       converter: (store) => store.state.allNewsState, //take allNewsState instead of all state
       builder: (context, state) {
         //'state' is coming from converter
