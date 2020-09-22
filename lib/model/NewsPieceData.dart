@@ -21,7 +21,7 @@ class NewsPieceData {
   factory NewsPieceData.fromJson(json) {
     return NewsPieceData(
         publisher: json['source']['name'],
-        author: json['source']['author'],
+        author: json['author'],
         title: json['title'],
         description: json['description'],
         urlToNews: json['url'],

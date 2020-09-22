@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_news_app/model/NewsPieceData.dart';
+import 'package:flutter_news_app/redux/AppState.dart';
+import 'package:flutter_news_app/redux/bookmarkedNews/bookmarkedNews_actions.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 // import 'package:gradient_bottom_navigation_bar/gradient_bottom_navigation_bar.dart';
 
 //TODO: add landscape layout
+//TODO: fetch actual (whole) Content
 
-class NewsItemPage extends StatelessWidget {
+class NewsItemPage extends StatefulWidget {
   final String author;
   final String title;
   final String description;
@@ -26,10 +31,28 @@ class NewsItemPage extends StatelessWidget {
       @required this.publisher});
 
   @override
+  _NewsItemPageState createState() => _NewsItemPageState();
+}
+
+class _NewsItemPageState extends State<NewsItemPage> {
+  @override
   Widget build(BuildContext context) {
+    bool isBookmarked = false;
+    if (Redux.store.state.bookmarkedNewsState.bookmarkedNewsList.singleWhere(
+            (newsPiece) => newsPiece.urlToNews == widget.urlToNews,
+            orElse: () => null) !=
+        null) {
+      setState(() {
+        isBookmarked = true;
+      });
+    } else {
+      setState(() {
+        isBookmarked = false;
+      });
+    }
     return Scaffold(
       appBar: GradientAppBar(
-        title: Text(title, style: TextStyle(fontSize: 17.0)),
+        title: Text(widget.title, style: TextStyle(fontSize: 17.0)),
         gradient: LinearGradient(colors: [
           Theme.of(context).primaryColor,
           Theme.of(context).accentColor
@@ -51,7 +74,7 @@ class NewsItemPage extends StatelessWidget {
                   topLeft: Radius.circular(10.0),
                   topRight: Radius.circular(10.0)),
               child: Image.network(
-                urlToImage,
+                widget.urlToImage,
                 loadingBuilder: (BuildContext context, child, progress) {
                   return progress == null ? child : LinearProgressIndicator();
                 },
@@ -68,8 +91,30 @@ class NewsItemPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Flexible(child: Text(author)),
-                        Icon(Icons.bookmark_border)
+                        Flexible(child: Text(widget.author)),
+                        Material(
+                          color: Color(0x00FFFFFF),
+                          child: InkWell(
+                            splashColor: Colors.red,
+                            onTap: () {
+                              Redux.store
+                                  .dispatch(ToggleIsBookmarked(NewsPieceData(
+                                publisher: widget.publisher,
+                                author: widget.author,
+                                title: widget.title,
+                                description: widget.description,
+                                urlToNews: widget.urlToNews,
+                                urlToImage: widget.urlToImage,
+                                publishedAt: widget.publishedAt,
+                              )));
+                            },
+                            child: Icon(
+                                isBookmarked
+                                    ? Icons.bookmark
+                                    : Icons.bookmark_border,
+                                color: isBookmarked ? Colors.green : null),
+                          ),
+                        ),
                       ],
                     ),
                     SizedBox(height: 8.0),
@@ -78,11 +123,11 @@ class NewsItemPage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(title,
+                          Text(widget.title,
                               style: TextStyle(
                                   fontSize: 21.0, fontWeight: FontWeight.bold)),
                           SizedBox(height: 8.0),
-                          Text(content,
+                          Text(widget.content,
                               style: TextStyle(
                                 fontSize: 18.0,
                                 //opacity
@@ -93,13 +138,13 @@ class NewsItemPage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(publisher,
+                              Text(widget.publisher,
                                   //it is a link (gesture detector?)
                                   style: TextStyle(
                                     fontSize: 16.0,
                                     //opacity
                                   )),
-                              Text(publishedAt),
+                              Text(widget.publishedAt),
                             ],
                           ),
                         ],
@@ -112,15 +157,6 @@ class NewsItemPage extends StatelessWidget {
           ],
         )),
       ),
-      // bottomNavigationBar: GradientBottomNavigationBar(
-      //   backgroundColorStart: Theme.of(context).accentColor,
-      //   backgroundColorEnd: Theme.of(context).primaryColor,
-      //   items: [
-      //     BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-      //     BottomNavigationBarItem(
-      //         icon: Icon(Icons.collections_bookmark), title: Text('Bookmarks')),
-      //   ],
-      // ),
     );
   }
 }

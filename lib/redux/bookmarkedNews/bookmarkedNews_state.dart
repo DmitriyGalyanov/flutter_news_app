@@ -8,12 +8,23 @@ class BookmarkedNewsState {
   BookmarkedNewsState({this.bookmarkedNewsList});
 
   factory BookmarkedNewsState.initial() =>
-      BookmarkedNewsState(bookmarkedNewsList: List<NewsPieceData>()); //const []
+      BookmarkedNewsState(bookmarkedNewsList: const []); //const [] //List<NewsPieceData>()
 
-  BookmarkedNewsState copy({
-    @required List<NewsPieceData> bookmarkedNewsList,
-  }) {
-    return BookmarkedNewsState(
-        bookmarkedNewsList: bookmarkedNewsList ?? this.bookmarkedNewsList);
+  // BookmarkedNewsState copyWith({
+  //   @required List<NewsPieceData> bookmarkedNewsList,
+  // }) {
+  //   return BookmarkedNewsState(
+  //       bookmarkedNewsList: bookmarkedNewsList.add(c) ?? this.bookmarkedNewsList);
+  // }
+
+  BookmarkedNewsState copy() {
+    return BookmarkedNewsState(bookmarkedNewsList: this.bookmarkedNewsList);
+  }
+
+  BookmarkedNewsState addItem({@required NewsPieceData addingNewsPieceData}) {
+    List<NewsPieceData> newBookmarkedNewsList = this.bookmarkedNewsList;
+    newBookmarkedNewsList.add(addingNewsPieceData);
+    return BookmarkedNewsState(bookmarkedNewsList: newBookmarkedNewsList);
+    // return BookmarkedNewsState(bookmarkedNewsList: this.bookmarkedNewsList.add(NewsPieceData this.newsPieceData))
   }
 }

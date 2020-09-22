@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_news_app/model/Models.dart';
 
 import 'package:flutter_news_app/redux/AppState.dart';
 
 
 import 'package:flutter_news_app/pages/NewsItemPage.dart';
+import 'package:flutter_news_app/redux/bookmarkedNews/bookmarkedNews_actions.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 // import 'package:flutter_news_app/redux/allNews/allNews_actions.dart';
 
@@ -37,10 +39,13 @@ class NewsTile extends StatefulWidget {
 
 class _NewsTileState extends State<NewsTile> {
   Widget portraitLayoutVariant(BuildContext context) {
-    // final regEx = RegExp(r"^https?:\/\/w?w?w?\.?.+\..+[^\/]$");
-    // var test = regEx.firstMatch(urlToNews);
-    // if (test != null) print(test.group(0));
-    // var isBookmarked = widget.isBookmarked;
+    bool isBookmarked = false;
+    if(Redux.store.state.bookmarkedNewsState.bookmarkedNewsList.singleWhere((newsPiece) => newsPiece.urlToNews == widget.urlToNews,
+    orElse: () => null) != null) {
+      setState(() {
+        isBookmarked = true;
+      });
+    }
 
     return StoreConnector<AppState, AppState>(
       converter: (store) => store.state,
@@ -81,15 +86,22 @@ class _NewsTileState extends State<NewsTile> {
                             splashColor: Colors.red,
                             // onTap: () => {},
                             onTap: () {
-                              // StoreProvider.of<AppState>(context)
-                              //     .dispatch();
+                              Redux.store.dispatch(ToggleIsBookmarked(NewsPieceData(
+                                publisher: widget.publisher,
+                                author: widget.author,
+                                title: widget.title,
+                                description: widget.description,
+                                urlToNews: widget.urlToNews,
+                                urlToImage: widget.urlToImage,
+                                publishedAt: widget.publishedAt,
+                                content: widget.content
+                              )));
                             },
-                            child: Icon(Icons.bookmark_border),
-                            // child: Icon(
-                            //     isBookmarked
-                            //         ? Icons.bookmark
-                            //         : Icons.bookmark_border,
-                            //     color: isBookmarked ? Colors.green : null),
+                            child: Icon(
+                                isBookmarked
+                                    ? Icons.bookmark
+                                    : Icons.bookmark_border,
+                                color: isBookmarked ? Colors.green : null),
                           ),
                         ),
                       ],
@@ -142,8 +154,7 @@ class _NewsTileState extends State<NewsTile> {
                                         urlToNews: widget.urlToNews,
                                         urlToImage: widget.urlToImage,
                                         publishedAt: widget.publishedAt,
-                                        content: widget.content,
-                                        //isBookmarked
+                                        content: widget.content
                                       );
                                     }));
                                   },

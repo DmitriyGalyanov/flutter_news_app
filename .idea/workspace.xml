@@ -5,17 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="326a50b8-57ca-4280-895d-1428074bc2df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/redux/bookmarkedNews/bookmarkedNews_actions.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/redux/bookmarkedNews/bookmarkedNews_reducer.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/redux/bookmarkedNews/bookmarkedNews_state.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/HomePageBodies/BookmarkedNewsTileList.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/HomePageBodies/NewsTileList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageBodies/NewsTileList.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/components/NewsTile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/NewsTile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/NewsPieceData.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/NewsPieceData.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/NewsItemPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/NewsItemPage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/redux/AppState.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/AppState.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/allNews/allNews_actions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/allNews/allNews_actions.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/allNews/allNews_reducer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/allNews/allNews_reducer.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/allNews/allNews_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/allNews/allNews_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/MainReducer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/MainReducer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/bookmarkedNews/bookmarkedNews_actions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/bookmarkedNews/bookmarkedNews_actions.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/bookmarkedNews/bookmarkedNews_reducer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/bookmarkedNews/bookmarkedNews_reducer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/bookmarkedNews/bookmarkedNews_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/bookmarkedNews/bookmarkedNews_state.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,22 +91,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1220" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600268139191" />
-    <state width="1395" height="276" key="GridCell.Tab.0.bottom" timestamp="1600789601351">
+    <state width="1395" height="232" key="GridCell.Tab.0.bottom" timestamp="1600801394459">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1395" height="276" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600789601351" />
-    <state width="1395" height="276" key="GridCell.Tab.0.center" timestamp="1600789601351">
+    <state width="1395" height="232" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600801394459" />
+    <state width="1395" height="232" key="GridCell.Tab.0.center" timestamp="1600801394459">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1395" height="276" key="GridCell.Tab.0.center/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600789601351" />
-    <state width="1395" height="276" key="GridCell.Tab.0.left" timestamp="1600789601351">
+    <state width="1395" height="232" key="GridCell.Tab.0.center/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600801394459" />
+    <state width="1395" height="232" key="GridCell.Tab.0.left" timestamp="1600801394459">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1395" height="276" key="GridCell.Tab.0.left/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600789601351" />
-    <state width="1395" height="276" key="GridCell.Tab.0.right" timestamp="1600789601351">
+    <state width="1395" height="232" key="GridCell.Tab.0.left/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600801394459" />
+    <state width="1395" height="232" key="GridCell.Tab.0.right" timestamp="1600801394459">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1395" height="276" key="GridCell.Tab.0.right/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600789601351" />
+    <state width="1395" height="232" key="GridCell.Tab.0.right/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600801394459" />
     <state x="703" y="166" key="SettingsEditor" timestamp="1600775366673">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

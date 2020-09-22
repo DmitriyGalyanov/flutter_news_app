@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_news_app/HomePageBodies/BookmarkedNewsTileList.dart';
 import 'package:flutter_news_app/redux/allNews/allNews_actions.dart';
 
 //additional modules
@@ -24,12 +25,12 @@ void main() async {
   runApp(MyApp());
 }
 
-//TODO: LINKS VIA GESTURE DETECTORS?
-//TODO: ADD ABILITY TO BOOKMARK POSTS
+//TODO: LINKS VIA GESTURE DETECTORS (at images)
 //TODO: ADD SORTING
 //TODO: EDIT DIRECTORIES STRUCTURE!!!
 //TODO: MAKE A REAL MIDDLEWARE (via Thunk)
 //TODO: ADD REDUX-PERSIST / SHARED-PREFERENCES
+//TODO: Fix publishedAt view
 
 class MyApp extends StatelessWidget {
   @override
@@ -102,7 +103,7 @@ class _HomePageState extends State<HomePage> {
       if (currentPage == 'home') {
         return Center(child: NewsTileList());
       } else if (currentPage == 'bookmarks') {
-        return Center(child: Text('bookmarks'));
+        return Center(child: BookmarkedNewsTileList());
       }
     }
 
