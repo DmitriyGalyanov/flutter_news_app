@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:gradient_app_bar/gradient_app_bar.dart';
-import 'package:gradient_bottom_navigation_bar/gradient_bottom_navigation_bar.dart';
+// import 'package:gradient_bottom_navigation_bar/gradient_bottom_navigation_bar.dart';
 
 //TODO: add landscape layout
 
@@ -57,8 +57,7 @@ class NewsItemPage extends StatelessWidget {
                 },
               ),
             ),
-            Column(
-                children: [
+            Column(children: [
               SizedBox(
                 height: 8.0,
               ),
@@ -110,72 +109,18 @@ class NewsItemPage extends StatelessWidget {
                 ),
               )
             ]),
-            // SizedBox(
-            //   height: 8.0,
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: Column(
-            //     children: [
-            //       Row(
-            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //         children: [
-            //           Flexible(child: Text(author)),
-            //           Icon(Icons.bookmark_border)
-            //         ],
-            //       ),
-            //       SizedBox(
-            //           height: 8.0
-            //       ),
-            //       Container(
-            //         alignment: Alignment.centerLeft,
-            //         child: Column(
-            //           crossAxisAlignment: CrossAxisAlignment.start,
-            //           children: [
-            //             Text(title,
-            //                 style: TextStyle(
-            //                     fontSize: 21.0, fontWeight: FontWeight.bold)),
-            //             SizedBox(
-            //                 height: 8.0
-            //             ),
-            //             Text(content,
-            //                 style: TextStyle(
-            //                   fontSize: 18.0,
-            //                   //opacity
-            //                 )),
-            //             SizedBox(
-            //               height: 24.0,
-            //             ),
-            //             Column(
-            //               crossAxisAlignment: CrossAxisAlignment.start,
-            //               children: [
-            //                 Text(publisher, //it is a link (gesture detector?)
-            //                     style: TextStyle(
-            //                       fontSize: 16.0,
-            //                       //opacity
-            //                     )),
-            //                 Text(publishedAt),
-            //               ],
-            //             ),
-            //           ],
-            //         ),
-            //       )
-            //     ],
-            //   ),
-            // )
           ],
         )),
       ),
-      bottomNavigationBar: GradientBottomNavigationBar(
-        backgroundColorStart: Theme.of(context).accentColor,
-        backgroundColorEnd: Theme.of(context).primaryColor,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.collections_bookmark), title: Text('Bookmarks')),
-        ],
-      ),
+      // bottomNavigationBar: GradientBottomNavigationBar(
+      //   backgroundColorStart: Theme.of(context).accentColor,
+      //   backgroundColorEnd: Theme.of(context).primaryColor,
+      //   items: [
+      //     BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+      //     BottomNavigationBarItem(
+      //         icon: Icon(Icons.collections_bookmark), title: Text('Bookmarks')),
+      //   ],
+      // ),
     );
-    ;
   }
 }

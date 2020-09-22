@@ -1,18 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_news_app/model/AppState.dart';
 
-import 'package:flutter_news_app/components/NewsItemPage.dart';
+// import Actions from 'package:flutter_news_app/store/AppState.dart';
 
-class NewsTileData {
-  String author;
-  String title;
-  String description;
-  String urlToNews;
-  String urlToImage;
-  String publishedAt;
-  String content;
-  String publisher;
-}
+import 'package:flutter_news_app/pages/NewsItemPage.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+// import 'package:flutter_news_app/redux/allNews/allNews_actions.dart';
 
 class NewsTile extends StatefulWidget {
   final String author;
@@ -34,22 +28,17 @@ class NewsTile extends StatefulWidget {
       @required this.publishedAt,
       @required this.content,
       @required this.publisher,
-      this.isBookmarked = false
-      });
+      this.isBookmarked = false});
 
   @override
   _NewsTileState createState() => _NewsTileState();
 }
 
 class _NewsTileState extends State<NewsTile> {
-
   Widget portraitLayoutVariant(BuildContext context) {
     // final regEx = RegExp(r"^https?:\/\/w?w?w?\.?.+\..+[^\/]$");
     // var test = regEx.firstMatch(urlToNews);
     // if (test != null) print(test.group(0));
-
-    // final deviceData = MediaQuery.of(context);
-    // final isBookmarked =
     var isBookmarked = widget.isBookmarked;
 
     return Container(
@@ -87,17 +76,21 @@ class _NewsTileState extends State<NewsTile> {
                         color: Color(0x00FFFFFF),
                         child: InkWell(
                           splashColor: Colors.red,
-                          onTap: () => {},
+                          // onTap: () => {},
+                          onTap: () {
+                            // StoreProvider.of<AppState>(context)
+                            //     .dispatch();
+                          },
                           child: Icon(
-                              isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                              isBookmarked
+                                  ? Icons.bookmark
+                                  : Icons.bookmark_border,
                               color: isBookmarked ? Colors.green : null),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 8.0
-                  ),
+                  SizedBox(height: 8.0),
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Column(
@@ -106,9 +99,7 @@ class _NewsTileState extends State<NewsTile> {
                         Text(widget.title,
                             style: TextStyle(
                                 fontSize: 20.0, fontWeight: FontWeight.bold)),
-                        SizedBox(
-                          height: 8.0
-                        ),
+                        SizedBox(height: 8.0),
                         Text(widget.content,
                             style: TextStyle(
                               fontSize: 14.0,
@@ -123,7 +114,8 @@ class _NewsTileState extends State<NewsTile> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(widget.publisher, //it is a link (gesture detector?)
+                                Text(widget.publisher,
+                                    //it is a link (gesture detector?)
                                     style: TextStyle(
                                       fontSize: 14.0,
                                       //opacity
@@ -134,23 +126,21 @@ class _NewsTileState extends State<NewsTile> {
                             Material(
                               color: Color(0x00FFFFFF),
                               child: IconButton(
-                                icon:  Icon(Icons.import_contacts),
+                                icon: Icon(Icons.import_contacts),
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) {
-                                      return NewsItemPage(
-                                        publisher: widget.publisher,
-                                        author: widget.author,
-                                        title: widget.title,
-                                        description: widget.description,
-                                        urlToNews: widget.urlToNews,
-                                        urlToImage: widget.urlToImage,
-                                        publishedAt: widget.publishedAt,
-                                        content: widget.content,
-                                      );
-                                    })
-                                  );
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return NewsItemPage(
+                                      publisher: widget.publisher,
+                                      author: widget.author,
+                                      title: widget.title,
+                                      description: widget.description,
+                                      urlToNews: widget.urlToNews,
+                                      urlToImage: widget.urlToImage,
+                                      publishedAt: widget.publishedAt,
+                                      content: widget.content,
+                                    );
+                                  }));
                                 },
                               ),
                             )
@@ -169,5 +159,22 @@ class _NewsTileState extends State<NewsTile> {
   @override
   Widget build(BuildContext context) {
     return portraitLayoutVariant(context);
+    // if (MediaQuery.of(context).orientation == Orientation.portrait) {
+    //   return Column(
+    //     children: [
+    //       StoreConnector<int, String>(
+    //         converter: (store) => store.state.toString(),
+    //         builder: (context, count) => Text(
+    //           count
+    //         ),
+    //       ),
+    //       StoreConnector<int, VoidCallBack>(
+    //         converter: (store) {
+    //           return() => store.dispatch(Actions.Increment);
+    //         },
+    //       )
+    //     ],
+    //   );
+    // }
   }
 }

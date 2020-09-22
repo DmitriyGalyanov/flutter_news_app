@@ -5,9 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="326a50b8-57ca-4280-895d-1428074bc2df" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/HomePageBodies/NewsTileList.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/AppState.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/Models.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/NewsPieceData.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/NewsItemPage.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/redux/allNews/allNews_actions.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/redux/allNews/allNews_reducers.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/redux/allNews/allnews_middlewares.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/components/NewsItemPage.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/components/NewsTile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/NewsTile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/components/NewsTileList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/NewsTileList.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/components/NewsTileList.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
@@ -26,8 +37,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="D:\job\flutter\tests\flutter_news_app\.idea" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1hVR7NZZMkB6vhUYD4EE54S4dMM" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -36,8 +56,13 @@
   <component name="PropertiesComponent">
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/store" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\job\flutter\tests\flutter_news_app\lib\store" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -53,37 +78,57 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="914" height="181" key="GridCell.Tab.0.bottom" timestamp="1600267224889">
+    <state x="1165" y="449" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1600729407870">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="181" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600267224889" />
-    <state width="914" height="181" key="GridCell.Tab.0.center" timestamp="1600267224889">
+    <state x="1165" y="449" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600729407870" />
+    <state x="1170" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600286166519">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="181" key="GridCell.Tab.0.center/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600267224889" />
-    <state width="914" height="181" key="GridCell.Tab.0.left" timestamp="1600267224889">
+    <state x="1170" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600286166519" />
+    <state x="1220" y="278" key="FileChooserDialogImpl" timestamp="1600268139191">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="181" key="GridCell.Tab.0.left/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600267224889" />
-    <state width="914" height="181" key="GridCell.Tab.0.right" timestamp="1600267224889">
+    <state x="1220" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600268139191" />
+    <state width="914" height="331" key="GridCell.Tab.0.bottom" timestamp="1600731174346">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="914" height="181" key="GridCell.Tab.0.right/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600267224889" />
-    <state x="1053" y="100" width="774" height="840" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1600195798874">
+    <state width="914" height="331" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600731174346" />
+    <state width="914" height="331" key="GridCell.Tab.0.center" timestamp="1600731174346">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1053" y="100" width="774" height="840" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600195798874" />
-    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1600195359408">
+    <state width="914" height="331" key="GridCell.Tab.0.center/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600731174346" />
+    <state width="914" height="331" key="GridCell.Tab.0.left" timestamp="1600731174346">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600195359408" />
-    <state x="1049" y="173" width="607" height="804" key="find.popup" timestamp="1600196944981">
+    <state width="914" height="331" key="GridCell.Tab.0.left/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600731174346" />
+    <state width="914" height="331" key="GridCell.Tab.0.right" timestamp="1600731174346">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1049" y="173" width="607" height="804" key="find.popup/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600196944981" />
+    <state width="914" height="331" key="GridCell.Tab.0.right/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600731174346" />
+    <state x="1053" y="100" width="774" height="840" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1600685049257">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1053" y="100" width="774" height="840" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600685049257" />
+    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1600684587943">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600684587943" />
+    <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600267803485">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600267803485" />
+    <state x="380" y="162" width="737" height="804" key="find.popup" timestamp="1600270518550">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="380" y="162" width="737" height="804" key="find.popup/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600270518550" />
     <state x="945" y="233" key="scopes" timestamp="1600196920124">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="945" y="233" key="scopes/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600196920124" />
+    <state x="1103" y="230" key="search.everywhere.popup" timestamp="1600269547838">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1103" y="230" key="search.everywhere.popup/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600269547838" />
   </component>
 </project>

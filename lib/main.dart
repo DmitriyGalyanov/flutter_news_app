@@ -1,112 +1,143 @@
 import 'package:flutter/material.dart';
 
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+//additional modules
+// import 'package:http/http.dart' as http;
+// import 'dart:convert';
 
+//Redux modules
+import 'package:redux/redux.dart';
+import 'package:redux_thunk/redux_thunk.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux_dev_tools/redux_dev_tools.dart';
+import 'package:flutter_redux_dev_tools/flutter_redux_dev_tools.dart';
+
+import 'package:flutter_news_app/model/AppState.dart';
+// import 'package:flutter_news_app/model/Models.dart';
+import 'package:flutter_news_app/redux/allNews/allNews_reducers.dart';
+// import 'package:flutter_news_app/redux/allNews/allNews_actions.dart';
+
+//custom 3rd-party components
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:gradient_bottom_navigation_bar/gradient_bottom_navigation_bar.dart';
 
-import 'package:flutter_news_app/components/NewsTileList.dart';
+//custom components
+//home page bodies
+import 'package:flutter_news_app/HomePageBodies/NewsTileList.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 //TODO: LINKS VIA GESTURE DETECTORS?
-//TODO: NAVIGATION TO SINGLE POST
 //TODO: ADD ABILITY TO BOOKMARK POSTS
-//TODO: ADD BOTTOM BAR WITH BUTTON LEADING TO BOOKMARKS
 //TODO: ADD SORTING
-//TODO: ADD 3RD BUTTON TO BOTTOM NAV BAR
-//TODO: MOVE FETCH FROM NewsTileList TO MAIN
+//TODO: EDIT DIRECTORIES STRUCTURE!!!
+//TODO: MAKE A REAL MIDDLEWARE (via Thunk)
+//TODO: ADD REDUX-PERSIST / SHARED-PREFERENCES
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      routes: {
+    // GO HERE FOURTH
+    final _initialState = AppState();
+    // final Store<AppState> store = Store<AppState>(
+    //     reducer,
+    //     middleware: [thunkMiddleware],
+    //     initialState: _initialState
+    // );
+    final DevToolsStore<AppState> store = DevToolsStore<AppState>(reducer,
+        middleware: [thunkMiddleware], initialState: _initialState);
 
-      },
-      title: 'Simple News App',
-      theme: ThemeData(
-        primarySwatch: Colors.cyan,
-        primaryColor: Colors.cyan,
-        accentColor: Colors.purpleAccent,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+    return StoreProvider<AppState>(
+      store: store,
+      child: MaterialApp(
+        initialRoute: '/',
+        routes: {
+          '/': (BuildContext context) =>
+              HomePage(title: 'Flutter News App', devStore: store),
+          // '/bookmarks': (BuildContext context) => BookmarksPage(title: 'test'),
+        },
+        title: 'Simple News App',
+        theme: ThemeData(
+          primarySwatch: Colors.cyan,
+          primaryColor: Colors.cyan,
+          accentColor: Colors.purpleAccent,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
       ),
-      home: MyHomePage(title: 'Flutter News App'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   final String title;
+  final devStore;
 
-  MyHomePage({Key key, this.title}) : super(key: key);
+  HomePage({Key key, this.title, this.devStore}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class NewsTileData {
-  String author;
-  String title;
-  String description;
-  String urlToNews;
-  String urlToImage;
-  String publishedAt;
-  String content;
-  String publisher;
-}
+class _HomePageState extends State<HomePage> {
+  int _currentPageIndex = 0;
 
-class _MyHomePageState extends State<MyHomePage> {
-  final bookmarkedNews = <NewsTileData>[];
-
-  final String apiUrl =
-      'http://newsapi.org/v2/top-headlines?' +
-          'country=us&' +
-          'apiKey=3f1d580b86b6414e8be8098c17351375';
-
-  Future fetchNews() async {
-    var result = await http.get(apiUrl);
-    return json.decode(result.body)['articles'];
+  void handleBottomNavTap(int index) {
+    setState(() {
+      _currentPageIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    String currentPage;
+    if (_currentPageIndex == 0) {
+      currentPage = 'home';
+    } else if (_currentPageIndex == 1) {
+      currentPage = 'bookmarks';
+    }
+
+    String title;
+    if (currentPage == 'home') {
+      title = widget.title;
+    } else if (currentPage == 'bookmarks') {
+      title = 'Bookmarks';
+    }
+
+    Widget body;
+    if (currentPage == 'home') {
+      body = Center(child: NewsTileList());
+    } else if (currentPage == 'bookmarks') {
+      body = Center(child: Text('bookmarks'));
+    }
     return Scaffold(
+      endDrawer: ReduxDevTools<AppState>(widget.devStore),
       appBar: GradientAppBar(
-        title: Text(widget.title),
-        gradient: LinearGradient(
-          colors: [
-            Theme.of(context).primaryColor,
-            Theme.of(context).accentColor
-          ]
-        ),
+        title: Text(title),
+        gradient: LinearGradient(colors: [
+          Theme.of(context).primaryColor,
+          Theme.of(context).accentColor
+        ]),
       ),
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Theme.of(context).primaryColor,
-              Theme.of(context).accentColor
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomLeft
-          )
-        ),
-        child: Center(
-          child: NewsTileList(newsFuture: fetchNews())
-        ),
-      ),
+          decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [
+            Theme.of(context).primaryColor,
+            Theme.of(context).accentColor
+          ], begin: Alignment.topLeft, end: Alignment.bottomLeft)),
+          child: body),
       bottomNavigationBar: GradientBottomNavigationBar(
         backgroundColorStart: Theme.of(context).accentColor,
         backgroundColorEnd: Theme.of(context).primaryColor,
+        onTap: handleBottomNavTap,
+        currentIndex: _currentPageIndex,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          BottomNavigationBarItem(icon: Icon(Icons.collections_bookmark), title: Text('Bookmarks')),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.collections_bookmark), title: Text('Bookmarks')),
         ],
       ),
     );
+    // );
   }
 }
