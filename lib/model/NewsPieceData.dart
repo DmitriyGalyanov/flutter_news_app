@@ -29,4 +29,10 @@ class NewsPieceData {
         publishedAt: json['publishedAt'],
         content: json['content']);
   }
+
+  static List<NewsPieceData> listFromJson(List json) {
+    return json == null
+        ? List<NewsPieceData>() //(0)
+        : json.map((model) => NewsPieceData.fromJson(model)).toList();
+  }
 }

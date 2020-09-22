@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_news_app/redux/MainReducer.dart';
+import 'package:flutter_news_app/redux/allNews/allNews_actions.dart';
+import 'package:flutter_news_app/redux/allNews/allNews_state.dart';
 
 //additional modules
 // import 'package:http/http.dart' as http;
@@ -11,9 +14,10 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux_dev_tools/redux_dev_tools.dart';
 import 'package:flutter_redux_dev_tools/flutter_redux_dev_tools.dart';
 
-import 'package:flutter_news_app/model/AppState.dart';
+import 'package:flutter_news_app/redux/AppState.dart';
+
 // import 'package:flutter_news_app/model/Models.dart';
-import 'package:flutter_news_app/redux/allNews/allNews_reducers.dart';
+import 'package:flutter_news_app/redux/allNews/allNews_reducer.dart';
 // import 'package:flutter_news_app/redux/allNews/allNews_actions.dart';
 
 //custom 3rd-party components
@@ -39,14 +43,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // GO HERE FOURTH
-    final _initialState = AppState();
-    // final Store<AppState> store = Store<AppState>(
-    //     reducer,
+    // final _initialState = AppState();
+    final Store<AppState> store = Store<AppState>(
+        mainReducer,
+        middleware: [thunkMiddleware],
+        initialState: AppState(allNewsState: AllNewsState.initial()));
+
+    // final DevToolsStore<AppState> store = DevToolsStore<AppState>(mainReducer,
     //     middleware: [thunkMiddleware],
-    //     initialState: _initialState
-    // );
-    final DevToolsStore<AppState> store = DevToolsStore<AppState>(reducer,
-        middleware: [thunkMiddleware], initialState: _initialState);
+    //     // initialState: _initialState);
+    //     initialState: AppState(allNewsState: AllNewsState.initial()));
 
     return StoreProvider<AppState>(
       store: store,
@@ -54,7 +60,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (BuildContext context) =>
-              HomePage(title: 'Flutter News App', devStore: store),
+              HomePage(title: 'Flutter News App'),
           // '/bookmarks': (BuildContext context) => BookmarksPage(title: 'test'),
         },
         title: 'Simple News App',
@@ -111,7 +117,7 @@ class _HomePageState extends State<HomePage> {
       body = Center(child: Text('bookmarks'));
     }
     return Scaffold(
-      endDrawer: ReduxDevTools<AppState>(widget.devStore),
+      // endDrawer: ReduxDevTools<AppState>(widget.devStore),
       appBar: GradientAppBar(
         title: Text(title),
         gradient: LinearGradient(colors: [
@@ -126,6 +132,7 @@ class _HomePageState extends State<HomePage> {
             Theme.of(context).accentColor
           ], begin: Alignment.topLeft, end: Alignment.bottomLeft)),
           child: body),
+          // child: NewsTileList()),
       bottomNavigationBar: GradientBottomNavigationBar(
         backgroundColorStart: Theme.of(context).accentColor,
         backgroundColorEnd: Theme.of(context).primaryColor,
@@ -137,6 +144,19 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Icons.collections_bookmark), title: Text('Bookmarks')),
         ],
       ),
+      floatingActionButton: StoreConnector<AppState, Store<AppState>>(
+        converter: (store) => store,
+        builder: (context, store) => FloatingActionButton(
+          backgroundColor: Theme.of(context).primaryColor,
+          // child: Icon(Icons.refresh)
+          child: Icon(Icons.get_app),
+          onPressed: () {
+            store.dispatch(fetchAllNewsAction(store));
+          },
+        ),
+      ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
     // );
   }
