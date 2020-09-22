@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_news_app/model/Models.dart';
-import 'package:flutter_news_app/redux/bookmarkedNews/bookmarkedNews_state.dart';
+// import 'package:flutter_news_app/redux/bookmarkedNews/bookmarkedNews_state.dart';
 
 //redux modules
 import 'package:flutter_redux/flutter_redux.dart';
@@ -29,26 +29,23 @@ class BookmarkedNewsTileList extends StatelessWidget {
                       ? bookmarkedNewsList.length
                       : 1,
                   itemBuilder: (_, index) => NewsTile(
-                    author: bookmarkedNewsList[index].author ??
-                        'No Author provided',
-                    title: bookmarkedNewsList[index].title ??
-                        'No title provided',
-                    description:
-                    bookmarkedNewsList[index].description ??
-                        'No description provided',
-                    urlToNews: bookmarkedNewsList[index].urlToNews ??
-                        'http://google.com/',
-                    urlToImage:
-                   bookmarkedNewsList[index].urlToImage ??
-                        placeHolderImage,
-                    publishedAt:
-                    bookmarkedNewsList[index].publishedAt ??
-                        'Publication time is not provided',
-                    content: bookmarkedNewsList[index].content ??
-                        'No content provided',
-                    publisher: bookmarkedNewsList[index].publisher ??
-                        'No publisher provided',
-                  )));
+                        author: bookmarkedNewsList[index].author ??
+                            'No Author provided',
+                        title: bookmarkedNewsList[index].title ??
+                            'No title provided',
+                        description: bookmarkedNewsList[index].description ??
+                            'No description provided',
+                        urlToNews: bookmarkedNewsList[index].urlToNews ??
+                            'http://google.com/',
+                        urlToImage: bookmarkedNewsList[index].urlToImage ??
+                            placeHolderImage,
+                        publishedAt: bookmarkedNewsList[index].publishedAt ??
+                            'Publication time is not provided',
+                        content: bookmarkedNewsList[index].content ??
+                            'No content provided',
+                        publisher: bookmarkedNewsList[index].publisher ??
+                            'No publisher provided',
+                      )));
       }, //state comes from converter
     );
   }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_news_app/model/NewsPieceData.dart';
 import 'package:flutter_news_app/redux/AppState.dart';
 import 'package:flutter_news_app/redux/bookmarkedNews/bookmarkedNews_actions.dart';
-import 'package:flutter_redux/flutter_redux.dart';
+// import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 // import 'package:gradient_bottom_navigation_bar/gradient_bottom_navigation_bar.dart';
@@ -19,6 +19,7 @@ class NewsItemPage extends StatefulWidget {
   final String publishedAt;
   final String content;
   final String publisher;
+  final bool isBookmarked;
 
   const NewsItemPage(
       {@required this.author,
@@ -28,7 +29,8 @@ class NewsItemPage extends StatefulWidget {
       this.urlToImage,
       @required this.publishedAt,
       @required this.content,
-      @required this.publisher});
+      @required this.publisher,
+      this.isBookmarked = false});
 
   @override
   _NewsItemPageState createState() => _NewsItemPageState();
@@ -37,7 +39,8 @@ class NewsItemPage extends StatefulWidget {
 class _NewsItemPageState extends State<NewsItemPage> {
   @override
   Widget build(BuildContext context) {
-    bool isBookmarked = false;
+    // bool isBookmarked = widget.isBookmarked; //widget.isBookmarked; // ;
+    var isBookmarked;
     if (Redux.store.state.bookmarkedNewsState.bookmarkedNewsList.singleWhere(
             (newsPiece) => newsPiece.urlToNews == widget.urlToNews,
             orElse: () => null) !=
@@ -50,6 +53,33 @@ class _NewsItemPageState extends State<NewsItemPage> {
         isBookmarked = false;
       });
     }
+    void _handleBookmarkIconClick() {
+      Redux.store.dispatch(ToggleIsBookmarked(NewsPieceData(
+        publisher: widget.publisher,
+        author: widget.author,
+        title: widget.title,
+        description: widget.description,
+        urlToNews: widget.urlToNews,
+        urlToImage: widget.urlToImage,
+        publishedAt: widget.publishedAt,
+        content: widget.content
+      )));
+      print(isBookmarked);
+      print(widget.urlToNews);
+      if (Redux.store.state.bookmarkedNewsState.bookmarkedNewsList.singleWhere(
+              (newsPiece) => newsPiece.urlToNews == widget.urlToNews,
+              orElse: () => null) !=
+          null) {
+        setState(() {
+          isBookmarked = true;
+        });
+      } else {
+        setState(() {
+          isBookmarked = false;
+        });
+      }
+    }
+
     return Scaffold(
       appBar: GradientAppBar(
         title: Text(widget.title, style: TextStyle(fontSize: 17.0)),
@@ -97,16 +127,7 @@ class _NewsItemPageState extends State<NewsItemPage> {
                           child: InkWell(
                             splashColor: Colors.red,
                             onTap: () {
-                              Redux.store
-                                  .dispatch(ToggleIsBookmarked(NewsPieceData(
-                                publisher: widget.publisher,
-                                author: widget.author,
-                                title: widget.title,
-                                description: widget.description,
-                                urlToNews: widget.urlToNews,
-                                urlToImage: widget.urlToImage,
-                                publishedAt: widget.publishedAt,
-                              )));
+                              _handleBookmarkIconClick();
                             },
                             child: Icon(
                                 isBookmarked

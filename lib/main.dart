@@ -6,6 +6,7 @@ import 'package:flutter_news_app/redux/allNews/allNews_actions.dart';
 
 //Redux modules
 import 'package:redux/redux.dart';
+
 // import 'package:redux_thunk/redux_thunk.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
@@ -41,14 +42,14 @@ class MyApp extends StatelessWidget {
     //     middleware: [thunkMiddleware],
     //     initialState: AppState(allNewsState: AllNewsState.initial()));
 
-
     return StoreProvider<AppState>(
       // store: store,
       store: Redux.store,
       child: MaterialApp(
         initialRoute: '/',
         routes: {
-          '/': (BuildContext context) => HomePage(title: 'Flutter News App', store: Redux.store),
+          '/': (BuildContext context) =>
+              HomePage(title: 'Flutter News App', store: Redux.store),
         },
         title: 'Simple News App',
         theme: ThemeData(
@@ -92,11 +93,12 @@ class _HomePageState extends State<HomePage> {
 
     // ignore: missing_return
     String _getTitle() {
-    if (currentPage == 'home') {
-      return widget.title;
-    } else if (currentPage == 'bookmarks') {
-      return 'Bookmarks';
-    }}
+      if (currentPage == 'home') {
+        return widget.title;
+      } else if (currentPage == 'bookmarks') {
+        return 'Bookmarks';
+      }
+    }
 
     // ignore: missing_return
     Widget _getBody() {
@@ -107,7 +109,8 @@ class _HomePageState extends State<HomePage> {
       }
     }
 
-    Widget _getFab() { // THAT THROWS THE ERROR
+    Widget _getFab() {
+      // THAT THROWS THE ERROR
       if (currentPage == 'home') {
         return FloatingActionButton(
           backgroundColor: Theme.of(context).primaryColor,
@@ -118,8 +121,10 @@ class _HomePageState extends State<HomePage> {
             Redux.store.dispatch(fetchAllNewsAction(Redux.store));
           },
         );
-      } else return null;
+      } else
+        return null;
     }
+
     return StoreConnector<AppState, Store<AppState>>(
       converter: (store) => store,
       builder: (context, store) => Scaffold(

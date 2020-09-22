@@ -4,7 +4,6 @@ import 'package:flutter_news_app/model/Models.dart';
 
 import 'package:flutter_news_app/redux/AppState.dart';
 
-
 import 'package:flutter_news_app/pages/NewsItemPage.dart';
 import 'package:flutter_news_app/redux/bookmarkedNews/bookmarkedNews_actions.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -19,19 +18,20 @@ class NewsTile extends StatefulWidget {
   final String publishedAt;
   final String content;
   final String publisher;
+
   // final bool isBookmarked;
 
-  const NewsTile(
-      {@required this.author,
-      @required this.title,
-      @required this.description,
-      @required this.urlToNews,
-      this.urlToImage,
-      @required this.publishedAt,
-      @required this.content,
-      @required this.publisher,
-      // this.isBookmarked = false
-      });
+  const NewsTile({
+    @required this.author,
+    @required this.title,
+    @required this.description,
+    @required this.urlToNews,
+    this.urlToImage,
+    @required this.publishedAt,
+    @required this.content,
+    @required this.publisher,
+    // this.isBookmarked = false
+  });
 
   @override
   _NewsTileState createState() => _NewsTileState();
@@ -40,8 +40,10 @@ class NewsTile extends StatefulWidget {
 class _NewsTileState extends State<NewsTile> {
   Widget portraitLayoutVariant(BuildContext context) {
     bool isBookmarked = false;
-    if(Redux.store.state.bookmarkedNewsState.bookmarkedNewsList.singleWhere((newsPiece) => newsPiece.urlToNews == widget.urlToNews,
-    orElse: () => null) != null) {
+    if (Redux.store.state.bookmarkedNewsState.bookmarkedNewsList.singleWhere(
+            (newsPiece) => newsPiece.urlToNews == widget.urlToNews,
+            orElse: () => null) !=
+        null) {
       setState(() {
         isBookmarked = true;
       });
@@ -86,16 +88,16 @@ class _NewsTileState extends State<NewsTile> {
                             splashColor: Colors.red,
                             // onTap: () => {},
                             onTap: () {
-                              Redux.store.dispatch(ToggleIsBookmarked(NewsPieceData(
-                                publisher: widget.publisher,
-                                author: widget.author,
-                                title: widget.title,
-                                description: widget.description,
-                                urlToNews: widget.urlToNews,
-                                urlToImage: widget.urlToImage,
-                                publishedAt: widget.publishedAt,
-                                content: widget.content
-                              )));
+                              Redux.store.dispatch(ToggleIsBookmarked(
+                                  NewsPieceData(
+                                      publisher: widget.publisher,
+                                      author: widget.author,
+                                      title: widget.title,
+                                      description: widget.description,
+                                      urlToNews: widget.urlToNews,
+                                      urlToImage: widget.urlToImage,
+                                      publishedAt: widget.publishedAt,
+                                      content: widget.content)));
                             },
                             child: Icon(
                                 isBookmarked
@@ -147,15 +149,15 @@ class _NewsTileState extends State<NewsTile> {
                                     Navigator.push(context,
                                         MaterialPageRoute(builder: (context) {
                                       return NewsItemPage(
-                                        publisher: widget.publisher,
-                                        author: widget.author,
-                                        title: widget.title,
-                                        description: widget.description,
-                                        urlToNews: widget.urlToNews,
-                                        urlToImage: widget.urlToImage,
-                                        publishedAt: widget.publishedAt,
-                                        content: widget.content
-                                      );
+                                          publisher: widget.publisher,
+                                          author: widget.author,
+                                          title: widget.title,
+                                          description: widget.description,
+                                          urlToNews: widget.urlToNews,
+                                          urlToImage: widget.urlToImage,
+                                          publishedAt: widget.publishedAt,
+                                          content: widget.content,
+                                          isBookmarked: isBookmarked);
                                     }));
                                   },
                                 ),
@@ -176,22 +178,5 @@ class _NewsTileState extends State<NewsTile> {
   @override
   Widget build(BuildContext context) {
     return portraitLayoutVariant(context);
-    // if (MediaQuery.of(context).orientation == Orientation.portrait) {
-    //   return Column(
-    //     children: [
-    //       StoreConnector<int, String>(
-    //         converter: (store) => store.state.toString(),
-    //         builder: (context, count) => Text(
-    //           count
-    //         ),
-    //       ),
-    //       StoreConnector<int, VoidCallBack>(
-    //         converter: (store) {
-    //           return() => store.dispatch(Actions.Increment);
-    //         },
-    //       )
-    //     ],
-    //   );
-    // }
   }
 }
