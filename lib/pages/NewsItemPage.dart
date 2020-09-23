@@ -5,6 +5,7 @@ import 'package:flutter_news_app/redux/bookmarkedNews/bookmarkedNews_actions.dar
 // import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 // import 'package:gradient_bottom_navigation_bar/gradient_bottom_navigation_bar.dart';
 
 //TODO: add landscape layout
@@ -37,6 +38,14 @@ class NewsItemPage extends StatefulWidget {
 }
 
 class _NewsItemPageState extends State<NewsItemPage> {
+  _launchUrl(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // bool isBookmarked = widget.isBookmarked; //widget.isBookmarked; // ;
@@ -165,7 +174,22 @@ class _NewsItemPageState extends State<NewsItemPage> {
                                     fontSize: 16.0,
                                     //opacity
                                   )),
-                              Text(widget.publishedAt),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(widget.publishedAt),
+
+                                  Material(
+                                    color: Color(0x00FFFFFF),
+                                    child: IconButton(
+                                      icon: Icon(Icons.launch),
+                                      onPressed: () {
+                                        _launchUrl(widget.urlToNews);
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ],

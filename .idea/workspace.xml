@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="326a50b8-57ca-4280-895d-1428074bc2df" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HomePageBodies/BookmarkedNewsTileList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HomePageBodies/BookmarkedNewsTileList.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/components/NewsTile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/NewsTile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/NewsItemPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/NewsItemPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,34 +88,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1220" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600268139191" />
-    <state width="1395" height="232" key="GridCell.Tab.0.bottom" timestamp="1600801394459">
+    <state width="1395" height="229" key="GridCell.Tab.0.bottom" timestamp="1600856944873">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1395" height="232" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600801394459" />
-    <state width="1395" height="232" key="GridCell.Tab.0.center" timestamp="1600801394459">
+    <state width="1395" height="229" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600856944873" />
+    <state width="1395" height="229" key="GridCell.Tab.0.center" timestamp="1600856944873">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1395" height="232" key="GridCell.Tab.0.center/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600801394459" />
-    <state width="1395" height="232" key="GridCell.Tab.0.left" timestamp="1600801394459">
+    <state width="1395" height="229" key="GridCell.Tab.0.center/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600856944873" />
+    <state width="1395" height="229" key="GridCell.Tab.0.left" timestamp="1600856944873">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1395" height="232" key="GridCell.Tab.0.left/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600801394459" />
-    <state width="1395" height="232" key="GridCell.Tab.0.right" timestamp="1600801394459">
+    <state width="1395" height="229" key="GridCell.Tab.0.left/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600856944873" />
+    <state width="1395" height="229" key="GridCell.Tab.0.right" timestamp="1600856944873">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1395" height="232" key="GridCell.Tab.0.right/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600801394459" />
+    <state width="1395" height="229" key="GridCell.Tab.0.right/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600856944873" />
     <state x="703" y="166" key="SettingsEditor" timestamp="1600775366673">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="703" y="166" key="SettingsEditor/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600775366673" />
-    <state x="1053" y="100" width="774" height="840" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1600774929562">
+    <state x="1053" y="100" width="774" height="840" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1600856160296">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1053" y="100" width="774" height="840" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600774929562" />
-    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1600774879962">
+    <state x="1053" y="100" width="774" height="840" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600856160296" />
+    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1600856009880">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600774879962" />
+    <state x="1136" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600856009880" />
     <state x="1249" y="440" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600267803485">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

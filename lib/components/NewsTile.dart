@@ -7,6 +7,7 @@ import 'package:flutter_news_app/redux/AppState.dart';
 import 'package:flutter_news_app/pages/NewsItemPage.dart';
 import 'package:flutter_news_app/redux/bookmarkedNews/bookmarkedNews_actions.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:url_launcher/url_launcher.dart';
 // import 'package:flutter_news_app/redux/allNews/allNews_actions.dart';
 
 class NewsTile extends StatefulWidget {
@@ -38,6 +39,14 @@ class NewsTile extends StatefulWidget {
 }
 
 class _NewsTileState extends State<NewsTile> {
+  _launchUrl(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   Widget portraitLayoutVariant(BuildContext context) {
     bool isBookmarked = false;
     if (Redux.store.state.bookmarkedNewsState.bookmarkedNewsList.singleWhere(
@@ -67,7 +76,9 @@ class _NewsTileState extends State<NewsTile> {
                 child: Image.network(
                   widget.urlToImage,
                   loadingBuilder: (BuildContext context, child, progress) {
-                    return progress == null ? child : LinearProgressIndicator();
+                    return progress == null
+                        ? child
+                        : LinearProgressIndicator();
                   },
                 ),
               ),
@@ -85,7 +96,6 @@ class _NewsTileState extends State<NewsTile> {
                         Material(
                           color: Color(0x00FFFFFF),
                           child: InkWell(
-                            splashColor: Colors.red,
                             // onTap: () => {},
                             onTap: () {
                               Redux.store.dispatch(ToggleIsBookmarked(
@@ -114,9 +124,18 @@ class _NewsTileState extends State<NewsTile> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(widget.title,
-                              style: TextStyle(
-                                  fontSize: 20.0, fontWeight: FontWeight.bold)),
+                          Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              onTap: () {_launchUrl(widget.urlToNews);},
+                              child: Text(widget.title,
+                                  style: TextStyle(
+                                      fontSize: 20.0, fontWeight: FontWeight.bold)),
+                            ),
+                          ),
+                          // Text(widget.title,
+                          //     style: TextStyle(
+                          //         fontSize: 20.0, fontWeight: FontWeight.bold)),
                           SizedBox(height: 8.0),
                           Text(widget.content,
                               style: TextStyle(
@@ -141,27 +160,41 @@ class _NewsTileState extends State<NewsTile> {
                                   Text(widget.publishedAt),
                                 ],
                               ),
-                              Material(
-                                color: Color(0x00FFFFFF),
-                                child: IconButton(
-                                  icon: Icon(Icons.import_contacts),
-                                  onPressed: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (context) {
-                                      return NewsItemPage(
-                                          publisher: widget.publisher,
-                                          author: widget.author,
-                                          title: widget.title,
-                                          description: widget.description,
-                                          urlToNews: widget.urlToNews,
-                                          urlToImage: widget.urlToImage,
-                                          publishedAt: widget.publishedAt,
-                                          content: widget.content,
-                                          isBookmarked: isBookmarked);
-                                    }));
-                                  },
-                                ),
-                              )
+                              Row(
+                                children: [
+                                  Material(
+                                    color: Color(0x00FFFFFF),
+                                    child: IconButton(
+                                      icon: Icon(Icons.launch),
+                                      onPressed: () {
+                                        _launchUrl(widget.urlToNews);
+                                      },
+                                    ),
+                                  ),
+                                  Material(
+                                    color: Color(0x00FFFFFF),
+                                    child: IconButton(
+                                      icon: Icon(Icons.import_contacts),
+                                      onPressed: () {
+                                        Navigator.push(context,
+                                            MaterialPageRoute(
+                                                builder: (context) {
+                                          return NewsItemPage(
+                                              publisher: widget.publisher,
+                                              author: widget.author,
+                                              title: widget.title,
+                                              description: widget.description,
+                                              urlToNews: widget.urlToNews,
+                                              urlToImage: widget.urlToImage,
+                                              publishedAt: widget.publishedAt,
+                                              content: widget.content,
+                                              isBookmarked: isBookmarked);
+                                        }));
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ],

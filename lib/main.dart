@@ -56,6 +56,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.cyan,
           primaryColor: Colors.cyan,
           accentColor: Colors.purpleAccent,
+          splashColor: Colors.lightBlueAccent,
+          highlightColor: Colors.transparent,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
       ),
