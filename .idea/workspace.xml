@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="326a50b8-57ca-4280-895d-1428074bc2df" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/MainReducer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/MainReducer.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/redux/allNews/allNews_reducer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/allNews/allNews_reducer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/bookmarkedNews/bookmarkedNews_reducer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/bookmarkedNews/bookmarkedNews_reducer.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

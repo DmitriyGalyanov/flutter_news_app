@@ -25,5 +25,5 @@ AllNewsState setAllNewsStateReducer(
 }
 
 Reducer<AllNewsState> allNewsReducer = combineReducers<AllNewsState>([
-  new TypedReducer<AllNewsState, SetAllNewsStateAction>(setAllNewsStateReducer),
+  TypedReducer<AllNewsState, SetAllNewsStateAction>(setAllNewsStateReducer),
 ]);
