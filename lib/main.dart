@@ -26,10 +26,8 @@ void main() async {
   runApp(MyApp());
 }
 
-//TODO: LINKS VIA GESTURE DETECTORS (at images)
 //TODO: ADD SORTING
 //TODO: EDIT DIRECTORIES STRUCTURE!!!
-//TODO: MAKE A REAL MIDDLEWARE (via Thunk)
 //TODO: ADD REDUX-PERSIST / SHARED-PREFERENCES
 //TODO: Fix publishedAt view
 
@@ -120,7 +118,8 @@ class _HomePageState extends State<HomePage> {
               ? Icon(Icons.get_app)
               : Icon(Icons.refresh),
           onPressed: () {
-            Redux.store.dispatch(fetchAllNewsAction(Redux.store));
+            // Redux.store.dispatch(fetchAllNewsAction(Redux.store));
+            Redux.store.dispatch(fetchAllNewsAction());
           },
         );
       } else

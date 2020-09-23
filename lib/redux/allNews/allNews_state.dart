@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_news_app/model/Models.dart';
 
-//TODO: split (combine) reducers
-//TODO: create slices
-
 class AllNewsState {
   final List<NewsPieceData> allNewsList;
   final bool isLoading;

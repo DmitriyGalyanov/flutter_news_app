@@ -6,29 +6,51 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:redux/redux.dart';
-// import 'package:redux_thunk/redux_thunk.dart';
+import 'package:redux_thunk/redux_thunk.dart';
 
-Future<void> fetchAllNewsAction(Store store) async {
-  // if (store.state.allNewsList != null) return; //need an action for refresh
+// Future<void> fetchAllNewsAction(Store store) async {
+//
+//   store.dispatch(
+//       SetAllNewsStateAction(AllNewsState(isLoading: true, isError: false)));
+//
+//   final String apiUrl = 'http://newsapi.org/v2/top-headlines?' +
+//       'country=us&' +
+//       'apiKey=3f1d580b86b6414e8be8098c17351375';
+//
+//   try {
+//     final response = await http.get(apiUrl);
+//     final jsonData = json.decode(response.body)['articles'];
+//     store.dispatch(SetAllNewsStateAction(AllNewsState(
+//         isLoading: false,
+//         isError: false,
+//         allNewsList: NewsPieceData.listFromJson(jsonData))));
+//   } catch (error) {
+//     store.dispatch(
+//         SetAllNewsStateAction(AllNewsState(isLoading: false, isError: true)));
+//   }
+// }
 
-  store.dispatch(
-      SetAllNewsStateAction(AllNewsState(isLoading: true, isError: false)));
-
+ThunkAction fetchAllNewsAction() {
   final String apiUrl = 'http://newsapi.org/v2/top-headlines?' +
       'country=us&' +
       'apiKey=3f1d580b86b6414e8be8098c17351375';
-
-  try {
-    final response = await http.get(apiUrl);
-    final jsonData = json.decode(response.body)['articles'];
-    store.dispatch(SetAllNewsStateAction(AllNewsState(
-        isLoading: false,
-        isError: false,
-        allNewsList: NewsPieceData.listFromJson(jsonData))));
-  } catch (error) {
-    store.dispatch(
-        SetAllNewsStateAction(AllNewsState(isLoading: false, isError: true)));
-  }
+  return (Store store) async {
+    Future(() async {
+      store.dispatch(
+          SetAllNewsStateAction(AllNewsState(isLoading: true, isError: false)));
+      try {
+        final response = await http.get(apiUrl);
+        final jsonData = json.decode(response.body)['articles'];
+        store.dispatch(SetAllNewsStateAction(AllNewsState(
+            isLoading: false,
+            isError: false,
+            allNewsList: NewsPieceData.listFromJson(jsonData))));
+      } catch (error) {
+        store.dispatch(
+            SetAllNewsStateAction(AllNewsState(isLoading: false, isError: true)));
+      }
+    });
+  };
 }
 
 class SetAllNewsStateAction {

@@ -8,8 +8,6 @@ import 'package:flutter_news_app/redux/bookmarkedNews/bookmarkedNews_state.dart'
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
-//TODO: split (combine) reducers !!!!!!!!
-
 class AppState {
   final AllNewsState allNewsState;
   final BookmarkedNewsState bookmarkedNewsState;

@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="326a50b8-57ca-4280-895d-1428074bc2df" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/AppState.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/AppState.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/MainReducer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/MainReducer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/allNews/allNews_actions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/allNews/allNews_actions.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/redux/allNews/allNews_reducer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/allNews/allNews_reducer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/allNews/allNews_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/allNews/allNews_state.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/redux/bookmarkedNews/bookmarkedNews_reducer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/redux/bookmarkedNews/bookmarkedNews_reducer.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,22 +87,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1220" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600268139191" />
-    <state width="1395" height="229" key="GridCell.Tab.0.bottom" timestamp="1600856944873">
+    <state width="1489" height="26" key="GridCell.Tab.0.bottom" timestamp="1600862740057">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1395" height="229" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600856944873" />
-    <state width="1395" height="229" key="GridCell.Tab.0.center" timestamp="1600856944873">
+    <state width="1489" height="26" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600862740057" />
+    <state width="1489" height="26" key="GridCell.Tab.0.center" timestamp="1600862740057">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1395" height="229" key="GridCell.Tab.0.center/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600856944873" />
-    <state width="1395" height="229" key="GridCell.Tab.0.left" timestamp="1600856944873">
+    <state width="1489" height="26" key="GridCell.Tab.0.center/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600862740057" />
+    <state width="1489" height="26" key="GridCell.Tab.0.left" timestamp="1600862740057">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1395" height="229" key="GridCell.Tab.0.left/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600856944873" />
-    <state width="1395" height="229" key="GridCell.Tab.0.right" timestamp="1600856944873">
+    <state width="1489" height="26" key="GridCell.Tab.0.left/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600862740057" />
+    <state width="1489" height="26" key="GridCell.Tab.0.right" timestamp="1600862740057">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1395" height="229" key="GridCell.Tab.0.right/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600856944873" />
+    <state width="1489" height="26" key="GridCell.Tab.0.right/0.0.1920.1040/-1024.310.1024.728@0.0.1920.1040" timestamp="1600862740057" />
     <state x="703" y="166" key="SettingsEditor" timestamp="1600775366673">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
