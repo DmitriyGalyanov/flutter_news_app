@@ -30,6 +30,7 @@ void main() async {
 //TODO: EDIT DIRECTORIES STRUCTURE!!!
 //TODO: ADD REDUX-PERSIST / SHARED-PREFERENCES
 //TODO: Fix publishedAt view
+//TODO: add counters for all news and bookmarks
 
 class MyApp extends StatelessWidget {
   @override

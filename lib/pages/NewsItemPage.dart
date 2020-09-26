@@ -64,15 +64,14 @@ class _NewsItemPageState extends State<NewsItemPage> {
     }
     void _handleBookmarkIconClick() {
       Redux.store.dispatch(ToggleIsBookmarked(NewsPieceData(
-        publisher: widget.publisher,
-        author: widget.author,
-        title: widget.title,
-        description: widget.description,
-        urlToNews: widget.urlToNews,
-        urlToImage: widget.urlToImage,
-        publishedAt: widget.publishedAt,
-        content: widget.content
-      )));
+          publisher: widget.publisher,
+          author: widget.author,
+          title: widget.title,
+          description: widget.description,
+          urlToNews: widget.urlToNews,
+          urlToImage: widget.urlToImage,
+          publishedAt: widget.publishedAt,
+          content: widget.content)));
       print(isBookmarked);
       print(widget.urlToNews);
       if (Redux.store.state.bookmarkedNewsState.bookmarkedNewsList.singleWhere(
@@ -142,7 +141,9 @@ class _NewsItemPageState extends State<NewsItemPage> {
                                 isBookmarked
                                     ? Icons.bookmark
                                     : Icons.bookmark_border,
-                                color: isBookmarked ? Colors.green : null),
+                                color: isBookmarked
+                                    ? Theme.of(context).accentColor
+                                    : null),
                           ),
                         ),
                       ],
@@ -175,10 +176,10 @@ class _NewsItemPageState extends State<NewsItemPage> {
                                     //opacity
                                   )),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(widget.publishedAt),
-
                                   Material(
                                     color: Color(0x00FFFFFF),
                                     child: IconButton(

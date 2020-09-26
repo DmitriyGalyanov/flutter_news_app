@@ -19,6 +19,7 @@ BookmarkedNewsState toggleBookmarkReducer(
     //and makes whole if FALSE
 
     print('Already exists! Now will be removed!');
+    //TODO: ADD A DIALOG TO CHECK IF USER IS SURE HE WANTS TO REMOVE BOOKMARK
     newBookmarkedNewsList.removeWhere(
         (newsPiece) => newsPiece.urlToNews == chosenNewsPiece.urlToNews);
   } else {

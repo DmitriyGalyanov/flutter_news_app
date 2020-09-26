@@ -76,9 +76,7 @@ class _NewsTileState extends State<NewsTile> {
                 child: Image.network(
                   widget.urlToImage,
                   loadingBuilder: (BuildContext context, child, progress) {
-                    return progress == null
-                        ? child
-                        : LinearProgressIndicator();
+                    return progress == null ? child : LinearProgressIndicator();
                   },
                 ),
               ),
@@ -113,7 +111,9 @@ class _NewsTileState extends State<NewsTile> {
                                 isBookmarked
                                     ? Icons.bookmark
                                     : Icons.bookmark_border,
-                                color: isBookmarked ? Colors.green : null),
+                                color: isBookmarked
+                                    ? Theme.of(context).accentColor
+                                    : null),
                           ),
                         ),
                       ],
@@ -127,10 +127,13 @@ class _NewsTileState extends State<NewsTile> {
                           Material(
                             color: Colors.transparent,
                             child: InkWell(
-                              onTap: () {_launchUrl(widget.urlToNews);},
+                              onTap: () {
+                                _launchUrl(widget.urlToNews);
+                              },
                               child: Text(widget.title,
                                   style: TextStyle(
-                                      fontSize: 20.0, fontWeight: FontWeight.bold)),
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold)),
                             ),
                           ),
                           // Text(widget.title,

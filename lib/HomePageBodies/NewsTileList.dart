@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_news_app/model/NewsPieceData.dart';
 import 'package:flutter_news_app/redux/allNews/allNews_state.dart';
+
+import 'package:http/http.dart' as http;
 
 //redux modules
 import 'package:flutter_redux/flutter_redux.dart';
@@ -55,6 +58,34 @@ class NewsTileList extends StatelessWidget {
       }, //state comes from converter
     );
   }
+  // Widget testLayout(BuildContext context) {
+  //   // print()
+  //   final deviceData = MediaQuery.of(context);
+  //   return SizedBox(
+  //             width: deviceData.size.width * 0.85,
+  //             child: StreamBuilder(
+  //               // stream: http.get('http://api.hnstream.com/news/stream/'),
+  //               builder: (BuildContext context, AsyncSnapshot snapshot) {
+  //                 List<NewsPieceData> news = snapshot.data;
+  //                 print(snapshot);
+  //                 return Text('test');
+  //                 // return ListView.builder(
+  //                 //   itemCount: news?.length ?? 1,
+  //                 //     itemBuilder:  (BuildContext context, index) => NewsTile(
+  //                 //       author: news[index].author ?? 'No author',
+  //                 //       title: news[index].title ?? 'No title',
+  //                 //       description: news[index].description ?? 'No description',
+  //                 //       urlToNews: news[index].urlToNews,
+  //                 //       urlToImage: news[index].urlToImage,
+  //                 //       publishedAt: news[index].publishedAt,
+  //                 //       content: news[index].content,
+  //                 //       publisher: news[index].publisher,
+  //                 //     )
+  //                 // );
+  //               },
+  //             )
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
